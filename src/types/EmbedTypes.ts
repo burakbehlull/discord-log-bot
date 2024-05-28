@@ -1,7 +1,6 @@
 interface EmbedTypes {
-    color?: string | any,
     title?: string | any,
-    description?: string | any,
+    color?: string | any,
     footer?: string | any
 }
 export {

@@ -6,24 +6,24 @@ export class messageSender {
         this.client = client
     }
 
-    embed({ color=0x0099FF, title, description,footer }:EmbedTypes){
+    embed({ title, color=0x0099FF,footer }:EmbedTypes){
         const guild = this.client
 
         const IFooter = footer ?? { text: guild.user.displayName, iconURL: guild.user.avatarURL()}
 
-        const IEmbed= new EmbedBuilder()
+        const IEmbed: any= new EmbedBuilder()
         .setColor(color)
         .setTitle(title)
-        .setDescription(description)
         .setTimestamp()
         .setFooter(IFooter)
         return IEmbed
     }
     
-    send(embed:any){
+    send(embed:any, id:number | any){
         const guild = this.client
+        const getId = id ?? process.env.logChannel
 
-        const channelSender = guild.channels.cache.get('1245026894165053590')
+        const channelSender = guild.channels.cache.get(getId)
         channelSender.send({ embeds: [embed] })
     }
     async info(channel:NonThreadGuildBasedChannel, type:AuditLogEvent){

@@ -1,4 +1,5 @@
-import {Client, GatewayIntentBits,AuditLogEvent, NonThreadGuildBasedChannel, EmbedBuilder} from 'discord.js'
+import { Client, GatewayIntentBits, AuditLogEvent, 
+    NonThreadGuildBasedChannel, EmbedBuilder } from 'discord.js'
 import dotenv from 'dotenv'
 import {messageSender} from './helpers/index.js'
 
@@ -19,12 +20,10 @@ const client = new Client({
 const sender = new messageSender(client)
 
 client.on('channelCreate', async (channel:NonThreadGuildBasedChannel)=> {
-    const IEmbed = sender.embed({
-        title: 'Burak Behlül',
-        description: 'github/burakbehlull',
-    })
+    const x:any= new EmbedBuilder()
+        .setDescription('ümit başardım kanka')
     await sender.info(channel, AuditLogEvent.ChannelCreate)
-    sender.send(IEmbed)
+    sender.send(x, "1245026894165053590")
 })
 
 client.login(process.env.TOKEN)
