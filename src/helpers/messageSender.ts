@@ -1,4 +1,4 @@
-import { EmbedBuilder } from "discord.js";
+import { AuditLogEvent, EmbedBuilder, NonThreadGuildBasedChannel } from "discord.js";
 import { EmbedTypes } from '../types/index.js'
 export class messageSender {
     client;
@@ -10,7 +10,7 @@ export class messageSender {
         const guild = this.client
 
         const IFooter = footer ?? { text: guild.user.displayName, iconURL: guild.user.avatarURL()}
-        
+
         const IEmbed= new EmbedBuilder()
         .setColor(color)
         .setTitle(title)
@@ -25,5 +25,17 @@ export class messageSender {
 
         const channelSender = guild.channels.cache.get('1245026894165053590')
         channelSender.send({ embeds: [embed] })
+    }
+    async info(channel:NonThreadGuildBasedChannel, type:AuditLogEvent){
+        try {
+            const logs = await channel.guild.fetchAuditLogs({
+                limit:1,
+                type: type
+            })
+            const log = logs.entries.first()
+            return log
+        } catch (err) {
+            console.log(err)
+        }
     }
 }

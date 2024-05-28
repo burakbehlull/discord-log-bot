@@ -23,6 +23,7 @@ client.on('channelCreate', async (channel:NonThreadGuildBasedChannel)=> {
         title: 'Burak Behlül',
         description: 'github/burakbehlull',
     })
+    await sender.info(channel, AuditLogEvent.ChannelCreate)
     sender.send(IEmbed)
 })
 
