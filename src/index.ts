@@ -1,7 +1,7 @@
 import { Client, GatewayIntentBits, AuditLogEvent, 
     NonThreadGuildBasedChannel, EmbedBuilder } from 'discord.js'
 import dotenv from 'dotenv'
-import {messageSender} from '@/helpers'
+import {messageSender} from './helpers/index.js'
 dotenv.config()
 
 const client = new Client({

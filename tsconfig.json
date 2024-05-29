@@ -11,9 +11,7 @@
       "outDir": "dist",
       "baseUrl": ".",
       "paths": {
-        "*": ["node_modules/*", "src/types/*"],
-        "@/types": ["src/types/index.ts"],
-        "@/helpers": ["src/helpers/index.ts"],
+        "*": ["node_modules/*", "src/types/*"]
       },
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true

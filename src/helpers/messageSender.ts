@@ -1,5 +1,5 @@
 import { AuditLogEvent, EmbedBuilder, NonThreadGuildBasedChannel } from "discord.js";
-import { EmbedTypes } from '@/types'
+import { EmbedTypes } from '../types/index.js'
 export class messageSender {
     client;
     constructor(client:any){
