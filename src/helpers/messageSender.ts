@@ -10,7 +10,6 @@ export class messageSender {
         const guild = this.client
 
         const IFooter = footer ?? { text: guild.user.displayName, iconURL: guild.user.avatarURL()}
-
         const IEmbed: any= new EmbedBuilder()
         .setColor(color)
         .setTitle(title)

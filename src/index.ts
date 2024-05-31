@@ -19,10 +19,12 @@ const client = new Client({
 const sender = new messageSender(client)
 
 client.on('channelCreate', async (channel:NonThreadGuildBasedChannel)=> {
-    const x:any= new EmbedBuilder()
-        .setDescription('ümit başardım kanka')
-    await sender.info(channel, AuditLogEvent.ChannelCreate)
-    sender.send(x, "1245026894165053590")
+    const user = await sender.info(channel, AuditLogEvent.ChannelCreate)
+    const footer = { text: user.executor.displayName, iconURL: user.executor.avatarURL()}
+    const Embed :any= new EmbedBuilder(sender.embed({title: "Channel Log", footer}))
+        .setDescription(`<@${user.executorId}> adlı kullanıcı <#${channel.id}> kanalını oluşturdu.`)
+        
+    sender.send(Embed, "1245026894165053590")
 })
 
 client.login(process.env.TOKEN)
