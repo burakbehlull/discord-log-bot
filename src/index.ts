@@ -1,7 +1,9 @@
 import { Client, GatewayIntentBits, AuditLogEvent, 
-    NonThreadGuildBasedChannel, EmbedBuilder } from 'discord.js'
+    NonThreadGuildBasedChannel, EmbedBuilder, 
+    ActivityType} from 'discord.js'
 import dotenv from 'dotenv'
 import {messageSender} from './helpers/index.js'
+import {ready} from './events/index.js'
 dotenv.config()
 
 const client = new Client({
@@ -17,6 +19,17 @@ const client = new Client({
 })
 
 const sender = new messageSender(client)
+
+ready(client, {
+    activities: [
+        {
+            name: 'Star Wars Clon Savaşları', 
+            type: ActivityType.Watching
+        }
+    ],
+    status: 'dnd',
+    shardId: 0
+})
 
 client.on('channelCreate', async (channel:NonThreadGuildBasedChannel)=> {
     const user = await sender.info(channel, AuditLogEvent.ChannelCreate)
