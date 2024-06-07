@@ -27,6 +27,8 @@ const eventsFiles = fs.readdirSync(eventsPath).filter((file) => file.endsWith('.
 
 dotenv.config()
 
+const { BOT_ID } = process.env
+console.log(BOT_ID)
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -66,6 +68,27 @@ client.on('channelUpdate', async (channel:NonThreadGuildBasedChannel)=> {
     const Embed :any= new EmbedBuilder(sender.embed({title: "Channel Log", footer}))
         .setDescription(`<@${user.executorId}> adlı kullanıcı, <#${channel.id}> (id: ${channel.id}) adlı kanalı güncelledi.`)
         .setThumbnail(channel.guild.iconURL())
+    sender.send(Embed, "1245026894165053590")
+})
+
+client.on('messageCreate', async (message:any)=>{
+    if(BOT_ID == message.author.id) return
+    const user = await sender.info(message, null)
+    const footer = { text: user.executor.displayName, iconURL: user.executor.avatarURL()}
+    const Embed:any= new EmbedBuilder(sender.embed({title: "Message Log", footer}))
+        .setDescription(`<@${user.executorId}> adlı kullanıcı, <#${message.channelId}> kanalına **${message.content}** adlı mesaj yolladı.`)
+        .setThumbnail(message.guild.iconURL())
+    sender.send(Embed, "1245026894165053590")
+})
+
+client.on('messageDelete', async (message:any)=>{
+    console.log(message)
+    if(BOT_ID == message.author.id) return
+    const user = await sender.info(message, AuditLogEvent.MessageDelete)
+    const footer = { text: user.executor.displayName, iconURL: user.executor.avatarURL()}
+    const Embed:any= new EmbedBuilder(sender.embed({title: "Message Log", footer}))
+        .setDescription(`<@${user.executorId}> adlı kullanıcı, <#${message.channelId}> kanalında **${message.content}** adlı mesajı sildi`)
+        .setThumbnail(message.guild.iconURL())
     sender.send(Embed, "1245026894165053590")
 })
 

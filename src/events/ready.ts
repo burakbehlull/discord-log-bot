@@ -1,14 +1,14 @@
-import {PresenceData, ActivityType} from 'discord.js'
+import { ActivityType } from 'discord.js'
 
 export default {
-    name: 'hazır',
+    name: 'Ready Event',
     func: (client: any | undefined) =>{
         if(!client) return
         client.on('ready', ()=> {
             client.user.setPresence({
                 activities: [
                     {
-                        name: 'Star Wars Clon Savaşları', 
+                        name: 'Star Wars: Revenge of The Sith', 
                         type: ActivityType.Watching
                     }
                 ],
