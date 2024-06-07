@@ -1,13 +1,14 @@
 {
     "compilerOptions": {
-      "module": "es6",
+      "module": "ESNext",
       "esModuleInterop": true,
       "allowSyntheticDefaultImports": true,
-      "target": "es2020",
+      "target": "ESNext",
       "noImplicitAny": true,
       "moduleResolution": "node",
       "resolveJsonModule": true,
       "sourceMap": true,
+	  "strict": false,
       "outDir": "dist",
       "baseUrl": ".",
       "paths": {
