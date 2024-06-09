@@ -1,5 +1,6 @@
 import { Client, GatewayIntentBits, AuditLogEvent, 
-    NonThreadGuildBasedChannel, EmbedBuilder } from 'discord.js'
+    NonThreadGuildBasedChannel, EmbedBuilder, 
+    GatewayGuildMemberAddDispatchData} from 'discord.js'
     
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import dotenv from 'dotenv'
@@ -72,7 +73,7 @@ client.on('channelUpdate', async (channel:NonThreadGuildBasedChannel)=> {
 })
 
 client.on('messageCreate', async (message:any)=>{
-    if(BOT_ID == message.author.id) return
+    if(message.author.bot) return
     const user = await sender.info(message, null)
     const footer = { text: user.executor.displayName, iconURL: user.executor.avatarURL()}
     const Embed:any= new EmbedBuilder(sender.embed({title: "Message Log", footer}))
@@ -82,8 +83,7 @@ client.on('messageCreate', async (message:any)=>{
 })
 
 client.on('messageDelete', async (message:any)=>{
-    console.log(message)
-    if(BOT_ID == message.author.id) return
+    if(message.author.bot) return
     const user = await sender.info(message, AuditLogEvent.MessageDelete)
     const footer = { text: user.executor.displayName, iconURL: user.executor.avatarURL()}
     const Embed:any= new EmbedBuilder(sender.embed({title: "Message Log", footer}))
@@ -93,10 +93,16 @@ client.on('messageDelete', async (message:any)=>{
 })
 
 
+client.on('messageUpdate', async (oldMsg:any, newMsg:any)=>{
+    if(newMsg.author.bot) return
+    const user = await sender.info(newMsg, AuditLogEvent.MessageDelete)
+    const footer = { text: user.executor.displayName, iconURL: user.executor.avatarURL()}
+    const Embed:any= new EmbedBuilder(sender.embed({title: "Message Log", footer}))
+        .setDescription(`<@${user.executorId}> adlı kullanıcı, <#${newMsg.channelId}> kanalına attığı **${oldMsg}** mesajını **${newMsg}** diye değiştirdi.`)
+        .setThumbnail(newMsg.guild.iconURL())
+    sender.send(Embed, "1245026894165053590")
+})
 
 client.login(process.env.TOKEN)
-.then(()=> {
-    console.log('Bot başlatıldı')
-
-})
+.then(()=> console.log('Bot başlatıldı'))
 .catch((err)=> console.log('error: ', err))
