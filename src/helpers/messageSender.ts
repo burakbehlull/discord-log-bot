@@ -17,7 +17,6 @@ export class messageSender {
         .setFooter(IFooter)
         return IEmbed
     }
-    
     send(embed:any, id:number | any){
         const guild = this.client
         const getId = id ?? process.env.logChannel
@@ -25,9 +24,17 @@ export class messageSender {
         const channelSender = guild.channels.cache.get(getId)
         channelSender.send({ embeds: [embed] })
     }
-    async info(channel:NonThreadGuildBasedChannel, type:AuditLogEvent){
+    sendAny(text:any, id:number | any){
+        const guild = this.client
+        const getId = id ?? process.env.logChannel
+
+        const channelSender = guild.channels.cache.get(getId)
+        channelSender.send(text)
+    }
+
+    async info(child:any, type:AuditLogEvent | any){
         try {
-            const logs = await channel.guild.fetchAuditLogs({
+            const logs = await child.guild.fetchAuditLogs({
                 limit:1,
                 type: type
             })

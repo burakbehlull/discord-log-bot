@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits } from 'discord.js'
+import { Client, EmbedBuilder, GatewayIntentBits } from 'discord.js'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import dotenv from 'dotenv'
 import path from 'node:path'
@@ -8,6 +8,7 @@ dotenv.config()
 
 const { BOT_ID } = process.env
 import { messageSender } from './helpers/index.js'
+
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -37,6 +38,8 @@ const client = new Client({
         GatewayIntentBits.GuildMessageReactions,
     ]
 })
+
+const sender = new messageSender(client)
 
 client.login(process.env.TOKEN)
 .then(()=> console.log('Bot başlatıldı'))

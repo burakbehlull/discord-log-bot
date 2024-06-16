@@ -1,5 +1,5 @@
-import { AuditLogEvent, EmbedBuilder, NonThreadGuildBasedChannel } from 'discord.js'
-import { messageSender } from '../helpers/index'
+import { AuditLogEvent, EmbedBuilder } from 'discord.js'
+import { messageSender } from '../helpers/index.js'
 
 export default {
     name: 'Message Create Event',
