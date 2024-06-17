@@ -2,7 +2,7 @@ import { AuditLogEvent, EmbedBuilder } from 'discord.js'
 import { messageSender } from '../helpers/index.js'
 
 export default {
-    name: 'Message Create Event',
+    name: 'Message Delete Event',
     func: (client:any)=>{
         const sender = new messageSender(client)
         client.on('messageDelete', async (message:any)=>{

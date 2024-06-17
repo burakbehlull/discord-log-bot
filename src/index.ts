@@ -1,4 +1,4 @@
-import { Client, EmbedBuilder, GatewayIntentBits } from 'discord.js'
+import { AuditLogEvent, Client, EmbedBuilder, GatewayIntentBits } from 'discord.js'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import dotenv from 'dotenv'
 import path from 'node:path'
