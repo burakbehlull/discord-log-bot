@@ -29,3 +29,5 @@ BOT_ID =
 | roleUpdate | ✅ |
 | roleDelete | ✅ |
 | voiceStateUpdate | ✅ |
+| guildMemberAdd | ✅ |
+| guildMemberRemove | ✅ |
