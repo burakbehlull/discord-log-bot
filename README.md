@@ -3,11 +3,29 @@
 ### Tech's:
 Typescript, DiscordJS v14
 
-#### install
+#### Operating path: 
 > npm i
 
-#### start
 > npm run dev
 
-#### build
 > npm run build
+
+To enter bot settings, create an .env file, there is an example .env file named .env-example in the project:
+```env
+TOKEN = 
+BOT_ID = 
+```
+### List of features included in the bot:
+| Event | Status |
+| ------ | ------ | 
+| ready | ✅ |
+| channelCreate | ✅ |
+| channelUpdate | ✅ |
+| channelDelete | ✅ |
+| messageCreate | ✅ |
+| messageUpdate | ✅ |
+| messageDelete | ✅ |
+| roleCreate | ✅ |
+| roleUpdate | ✅ |
+| roleDelete | ✅ |
+| voiceStateUpdate | ✅ |
