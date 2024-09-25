@@ -17,11 +17,9 @@ export class Base {
             const filePath = path.join(eventsPath, file)
             const fileUrl = pathToFileURL(filePath).href
             const reqFile = await import(fileUrl)
-            console.log("req", reqFile)
             const event = reqFile.default
-        console.log("event", event.eventName)
 
-            console.log(event.name+'yüklendi')
+            console.log(event.name+' yüklendi')
             if(event.once){
                 this.client.once(event.name, (...args:any) => event.execute(...args))
             } else {
