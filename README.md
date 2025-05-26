@@ -14,6 +14,7 @@ To enter bot settings, create an .env file, there is an example .env file named 
 ```env
 TOKEN = 
 BOT_ID = 
+logChannel = 
 ```
 ### List of features included in the bot:
 | Event | Status |

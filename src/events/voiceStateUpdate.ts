@@ -12,7 +12,7 @@ export default {
                 if (channel) {
                     const IEmbed = new EmbedBuilder(sender.embed({title: 'Voice Log'}))
                         .setDescription(`<@${newState.member.user.id}> adlı kullanıcı <#${newState.channelId}> kanalına girdi.`)
-                    await sender.send(IEmbed, '1245026894165053590')
+                    await sender.send(IEmbed)
                     
                 }
             }
@@ -21,7 +21,7 @@ export default {
                 if (channel) {
                     const IEmbed = new EmbedBuilder(sender.embed({title: 'Voice Log'}))
                         .setDescription(`<@${oldState.member.user.id}> adlı kullanıcı <#${oldState.channelId}> kanalından çıktı.`)
-                    await sender.send(IEmbed, '1245026894165053590')
+                    await sender.send(IEmbed)
                 }
             }
         })

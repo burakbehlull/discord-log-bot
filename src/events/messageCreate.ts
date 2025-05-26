@@ -12,7 +12,7 @@ export default {
             const Embed:any= new EmbedBuilder(sender.embed({title: "Message Log", footer}))
                 .setDescription(`<@${message.author.id}> adlı kullanıcı, <#${message.channelId}> kanalına **${message.content}** adlı mesaj yolladı.`)
                 .setThumbnail(message.guild.iconURL())
-            sender.send(Embed, "1245026894165053590")
+            sender.send(Embed)
         })
         
     }

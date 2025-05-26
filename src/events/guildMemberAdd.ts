@@ -11,7 +11,7 @@ export default {
             const Embed:any= new EmbedBuilder(sender.embed({title: "Guild Add Log", footer}))
                 .setDescription(`<@${member.user.id}> adlı kullanıcı, sunucuya giriş yaptı.`)
                 .setThumbnail(member.guild.iconURL())
-            sender.send(Embed, "1245026894165053590")
+            sender.send(Embed)
         })
     }
     

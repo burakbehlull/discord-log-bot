@@ -13,7 +13,7 @@ export default {
             const Embed :any = new EmbedBuilder(sender.embed({title: "Channel Log", footer}))
                 .setDescription(`<@${user.executorId}> adlı kullanıcı, **${channel.name}** (id: ${channel.id}) adlı kanalı yarattı.`)
                 .setThumbnail(channel.guild.iconURL())
-            sender.send(Embed, "948696953695383643")
+            sender.send(Embed)
         })
     }
     
