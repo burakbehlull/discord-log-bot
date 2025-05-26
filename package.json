@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node dist/index.js",
     "bot": "node dist/index.js",
-    "build": "tsc -p . -w",
+    "watch": "tsc -p . -w",
+	"build": "tsc -p .",
     "dev": "concurrently \"npm run build\" \"npm run start\""
   
   },

@@ -11,7 +11,7 @@ export default {
             const Embed :any = new EmbedBuilder(sender.embed({title: "Channel Log", footer}))
                 .setDescription(`<@${user.executorId}> adlı kullanıcı, **${channel.name}** (id: ${channel.id}) adlı kanalı sildi.`)
                 .setThumbnail(channel.guild.iconURL())
-            sender.send(Embed, "1245026894165053590")
+            sender.send(Embed, "948696953695383643")
         })
     }
     
